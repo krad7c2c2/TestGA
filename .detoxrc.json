@@ -1,0 +1,40 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.js",
+  "apps": {
+    "android.emu.debug": {
+      "type": "android.apk",
+      "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+      "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug"
+    },
+    "ios.sim.debug": {
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/MyApp.app",
+      "build": "xcodebuild -workspace ios/MyApp.xcworkspace -scheme MyApp -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build"
+    }
+  },
+  "devices": {
+    "emulator": {
+      "type": "android.emulator",
+      "device": {
+        "avdName": "Pixel_9_Pro_API_35"
+      }
+    },
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 16 Pro"
+      }
+    }
+  },
+  "configurations": {
+    "android.emu.debug": {
+      "device": "emulator",
+      "app": "android.emu.debug"
+    },
+    "ios.sim.debug": {
+      "device": "simulator",
+      "app": "ios.sim.debug"
+    }
+  }
+}
