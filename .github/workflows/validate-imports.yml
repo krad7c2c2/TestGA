@@ -1,0 +1,26 @@
+name: Validate Imports
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  validate-imports:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install --save-dev eslint eslint-plugin-react eslint-plugin-import
+    
+    - name: Validate imports
+      run: |
+        npx eslint --max-warnings 0 "app/**/*.{js,jsx,ts,tsx}"
