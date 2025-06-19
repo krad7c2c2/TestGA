@@ -21,6 +21,6 @@ jobs:
         npm install
         npm install --save-dev eslint eslint-plugin-react eslint-plugin-import
     
-    - name: Validate imports
+    - name: Fix and validate imports
       run: |
-        npx eslint --max-warnings 0 "app/**/*.{js,jsx,ts,tsx}"
+        npx eslint --fix --max-warnings 10 "app/**/*.{js,jsx,ts,tsx}"

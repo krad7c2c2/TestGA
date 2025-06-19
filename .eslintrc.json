@@ -23,6 +23,19 @@
     "import/named": "error",
     "import/default": "error",
     "import/namespace": "error",
-    "import/no-extraneous-dependencies": "error"
+    "import/no-extraneous-dependencies": "error",
+    "import/no-duplicates": "error",
+    "import/no-cycle": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-unused-modules": "warn",
+    "import/order": ["error", {
+      "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+      "newlines-between": "always"
+    }],
+    "no-unused-vars": ["warn", {"argsIgnorePattern": "^_"}],
+    "eol-last": "warn",
+    "no-trailing-spaces": "warn"
   }
 }
