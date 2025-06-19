@@ -1,11 +1,24 @@
-name: 01a Hola Mundo
+name: Run Unit Tests
 on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
+  push:
+    branches: [ main ]
+
 jobs:
-  hola-mundo:
-    # The type of runner that the job will run on
+  test:
     runs-on: ubuntu-latest
-    steps:   
-    - name: Hola Mundo
-      run: echo "Hola Mundo"
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Using Node.js 20 LTS
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test
