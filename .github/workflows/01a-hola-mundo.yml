@@ -12,6 +12,8 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 20        
+    - run: npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-jest @babel/plugin-transform-runtime
     - run: npm install
+    - run: npm install --save-dev @testing-library/react-native @testing-library/jest-native
     - run: npm test 
 
