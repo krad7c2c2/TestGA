@@ -29,6 +29,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gradle-
 
+    - name: Navigate to android folder
+      run: cd android
+
     - name: Clean project
       run: ./gradlew clean
       env:
@@ -38,3 +41,9 @@ jobs:
       run: ./gradlew app:assembleRelease
       env:
         JAVA_HOME: ${{ env.JAVA_HOME_17}}
+
+    - name: Save APK as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: android-release-apk
+        path: app/build/outputs/apk/release/app-release.apk
