@@ -43,7 +43,7 @@ jobs:
         JAVA_HOME: ${{ env.JAVA_HOME_17}}
 
     - name: Save APK as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact
       with:
         name: android-release-apk
         path: app/build/outputs/apk/release/app-release.apk
