@@ -22,6 +22,19 @@ jobs:
     - name: Install Node dependencies
       run: npm install
 
+    - name: Clean JavaScript bundle
+      run: |
+        rm -rf android/app/build/generated/assets/
+        rm -rf android/app/src/main/assets/index.android.bundle
+        rm -rf android/app/src/main/assets/index.android.bundle.map
+
+    - name: Prepare Hermes environment
+      run: |
+        cd android
+        ./gradlew :app:bundleReleaseJsAndAssets --stacktrace
+        cd ..
+      working-directory: android
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
